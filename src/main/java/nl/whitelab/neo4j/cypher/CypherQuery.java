@@ -1086,7 +1086,7 @@ public abstract class CypherQuery {
 //		filterGrouping = " MATCH (document:Document)-[:HAS_TOKEN]->t1";
 		filterGrouping = "";
 		List<String> corpusNodes = getStartNodesForType("Corpus");
-		List<String> collectionNodes = getStartNodesForType("Corpus");
+		List<String> collectionNodes = getStartNodesForType("Collection");
 		if (corpusNodes.size() == 0 && collectionNodes.size() == 0) {
 			if (query.getGroup().equals("Corpus_title")) {
 				filterGrouping = filterGrouping + " MATCH (corpus)-[:HAS_COLLECTION]->(:Collection)-[:HAS_DOCUMENT]->(document) "
