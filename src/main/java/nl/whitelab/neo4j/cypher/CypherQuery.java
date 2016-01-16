@@ -574,11 +574,11 @@ public abstract class CypherQuery {
 			columnTokenIds.add(tokenId);
 			if ((tokenIds.contains(prevTokenId) || tokenIds.contains(nextTokenId)) && !connectedTokenIds.contains(tokenId)) {
 				if (tokenIds.contains(prevTokenId) && tokenIds.contains(nextTokenId))
-					tokenStartNode = "("+prevTokenId+")-[:NEXT]->("+tokenId+":WordToken)-[:NEXT]->("+nextTokenId+")";
+					tokenStartNode = "("+prevTokenId+")-[:NEXT]->("+tokenId+":WordToken)-[:NEXT]->("+nextTokenId+") MATCH ("+tokenId+")";
 				else if (tokenIds.contains(prevTokenId))
 					tokenStartNode = "("+prevTokenId+")-[:NEXT]->("+tokenId+":WordToken)";
 				else if (tokenIds.contains(nextTokenId))
-					tokenStartNode = "("+tokenId+":WordToken)-[:NEXT]->("+nextTokenId+")";
+					tokenStartNode = "("+tokenId+":WordToken)-[:NEXT]->("+nextTokenId+") MATCH ("+tokenId+")";
 			} else
 				tokenStartNode = "("+tokenId+":WordToken)";
 		}
