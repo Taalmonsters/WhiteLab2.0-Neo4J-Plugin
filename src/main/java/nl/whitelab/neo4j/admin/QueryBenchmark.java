@@ -1,11 +1,14 @@
 package nl.whitelab.neo4j.admin;
 
+import com.google.common.collect.Lists;
+
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -186,6 +189,10 @@ public class QueryBenchmark extends DatabasePlugin {
 						
 						for (Node startNode : nodeIndex.query("label", patterns.get(0))) {
 							Traverser t = getPatternMatch(startNode, patterns, nodeLabels, linkLabels);
+							
+//							List<org.neo4j.graphdb.Path> list = Lists.newArrayList(t.iterator());
+//							Collections.sort(list);
+							
 							ResourceIterator<org.neo4j.graphdb.Path> it = t.iterator();
 							while (it.hasNext()) {
 								org.neo4j.graphdb.Path path = it.next();
