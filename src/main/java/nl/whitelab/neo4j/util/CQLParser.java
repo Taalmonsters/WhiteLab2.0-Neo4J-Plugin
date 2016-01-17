@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.apache.commons.lang3.StringEscapeUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -161,7 +162,7 @@ public class CQLParser {
 	private JSONObject stringToField(String type, String operator, String sensitivity, String value, String quantifier) {
 		JSONObject field = new JSONObject();
 		field.put("field", typeToField(type, value));
-		field.put("pattern", value);
+		field.put("pattern", StringEscapeUtils.escapeJava(value));
 		field.put("operator", operatorToString(operator));
 		if (sensitivity != null && sensitivity.length() > 0 && sensitivity.equals("(?c)"))
 			field.put("case_sensitive", true);
